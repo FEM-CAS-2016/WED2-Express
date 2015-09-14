@@ -12,6 +12,7 @@ function publicRegisterUser(email, passwort, callback)
 {
     if(!(email && passwort)) {  callback("no user", null); }
 
+    //never store plain password!
     var user = new User(email, passwort);
     db.insert(user, function(err, newDoc){
         if(callback){
@@ -21,7 +22,10 @@ function publicRegisterUser(email, passwort, callback)
 }
 
 function publicAuthentication(email, passwort, callback){
-    if(!(email && passwort)) {  callback(false); }
+    if(!(email && passwort)) {
+        callback(false);
+        return;
+    }
 
     db.findOne({ email: email }, function (err, doc) {
         if(doc == null && !err){

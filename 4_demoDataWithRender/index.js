@@ -12,7 +12,7 @@ app.set('views', __dirname + '/views');
 var router = express.Router();
 
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(require("method-override")(function(req, res){
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'))
 
 
 http.createServer(app).listen(3000);
-
+console.log("server started at http://localhost:3000/");
 
 
 hbs.registerHelper('if_eq', function(a, b, opts) {

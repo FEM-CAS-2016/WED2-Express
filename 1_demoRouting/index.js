@@ -38,7 +38,7 @@ function myDummyLogger( options ){
 
 //
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(require("method-override")(methodOverride));
 app.use(myDummyLogger());
@@ -118,4 +118,4 @@ router.delete("/orders/:id/", deleteOrder);
 
 
 http.createServer(app).listen(3000);
-
+console.log("server started at http://localhost:3000/");

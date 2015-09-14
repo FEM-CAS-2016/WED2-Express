@@ -9,4 +9,4 @@ var router = express.Router();
 
 
 http.createServer(app).listen(3000);
-
+console.log("server started at http://localhost:3000/");

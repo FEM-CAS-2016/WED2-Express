@@ -10,7 +10,7 @@ function Order(pizzaName, orderedBy)
 }
 
 
-function publicAddOrder(pizzaName, orderedBy, callback)
+function publicAdd(pizzaName, orderedBy, callback)
 {
     var order = new Order(pizzaName, orderedBy);
     db.insert(order, function(err, newDoc){
@@ -39,4 +39,4 @@ function publicAll()
     });
 }
 
-module.exports = {add : publicAddOrder, delete : publicRemove, get : publicGet, all : publicAll};
+module.exports = {add : publicAdd, delete : publicRemove, get : publicGet, all : publicAll};
